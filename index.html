@@ -32,6 +32,7 @@
             font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
+            margin-right: 10px;
         }
         button:hover {
             background-color: #45a049;
@@ -164,12 +165,11 @@
                         { SN: 108, ID: "2024KUEC2053", Name: "ASHISH SINGH" }
 
                     ];
-
+                    
                     const savedStates = JSON.parse(localStorage.getItem('studentChecklist')) || {};
 
                     students.forEach(student => {
                         const isChecked = savedStates[student.ID] || false;
-
                         document.write(`
                             <tr>
                                 <td>${student.SN}</td>
@@ -185,10 +185,19 @@
                         states[studentID] = isChecked;
                         localStorage.setItem('studentChecklist', JSON.stringify(states));
                     }
+
+                    function clearAll() {
+                        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                        checkboxes.forEach(checkbox => checkbox.checked = false);
+
+                        localStorage.removeItem('studentChecklist');
+                        alert('All selections cleared.');
+                    }
                 </script>
             </tbody>
         </table>
         <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="clearAll()">Clear All</button>
     </form>
 
     <script>
