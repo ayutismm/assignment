@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Checklist</h1>
+    <form id="studentForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Submitted</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    const students = [
+                        { SN: 1, ID: "2024KUCP1062", Name: "HARSH SAINI" },
+                        { SN: 2, ID: "2024KUCP1063", Name: "AJAY RAJ" },
+                        { SN: 3, ID: "2024KUCP1064", Name: "PIYUSH BINDAL" },
+                        { SN: 4, ID: "2024KUCP1065", Name: "KASSHAN KHAN" },
+                        { SN: 5, ID: "2024KUCP1066", Name: "LOKENDRA SINGH" },
+                        { SN: 6, ID: "2024KUCP1067", Name: "DHRUV KANOJIA" },
+                        { SN: 7, ID: "2024KUCP1068", Name: "VISHESH GOEL" },
+                        { SN: 8, ID: "2024KUCP1069", Name: "OM UPADHYAY" },
+                        { SN: 9, ID: "2024KUCP1070", Name: "PATIL GAURAV PRAVIN" },
+                        { SN: 10, ID: "2024KUCP1071", Name: "SOMYA SARASWAT" },
+                        { SN: 10, ID: "2024KUCP1071", Name: "SOMYA SARASWAT" },
+                        { SN: 11, ID: "2024KUCP1072", Name: "KALERU PRANAV KUMAR" },
+                        { SN: 12, ID: "2024KUCP1073", Name: "SRISHTI SADHNA" },
+                        { SN: 13, ID: "2024KUCP1074", Name: "KATARIYA BHAGIRATH BABUBHAI" },
+                        { SN: 14, ID: "2024KUCP1075", Name: "ANUBHAV SINGH" },
+                        { SN: 15, ID: "2024KUCP1076", Name: "ANSH KUMAR MALHOTRA" },
+                        { SN: 16, ID: "2024KUCP1077", Name: "URMILA" },
+                        { SN: 17, ID: "2024KUCP1078", Name: "RIDDHIMA SAHU" },
+                        { SN: 18, ID: "2024KUCP1079", Name: "VINITA SHARMA" },
+                        { SN: 19, ID: "2024KUCP1080", Name: "MOGILI MOUNIKA" },
+                        { SN: 20, ID: "2024KUCP1081", Name: "CHIRAG SINGH" },
+                        { SN: 21, ID: "2024KUCP1082", Name: "ANSHPREET" },
+                        { SN: 22, ID: "2024KUCP1083", Name: "VISHAL" },
+                        { SN: 23, ID: "2024KUCP1084", Name: "PARMAR ANANT JAYSUKHBHAI" },
+                        { SN: 24, ID: "2024KUCP1085", Name: "DHAIRYA MARU" },
+                        { SN: 25, ID: "2024KUCP1086", Name: "AJAY DHAWAN" },
+                        { SN: 26, ID: "2024KUCP1087", Name: "AKSHATH WALIA" },
+                        { SN: 27, ID: "2024KUCP1088", Name: "PRANJAL MEENA" },
+                        { SN: 28, ID: "2024KUCP1089", Name: "RUDRA PRATAP SINGH" },
+                        { SN: 29, ID: "2024KUCP1090", Name: "SHOURYA THAKUR" },
+                        { SN: 30, ID: "2024KUCP1091", Name: "KAASHVI BUNAS" },
+                        { SN: 31, ID: "2024KUCP1092", Name: "PRIYANSHU ARORA" },
+                        { SN: 32, ID: "2024KUCP1093", Name: "POOJA SAGAR" },
+                        { SN: 33, ID: "2024KUCP1094", Name: "TIPIRISETTI SAIRAKSHITH" },
+                        { SN: 34, ID: "2024KUCP1095", Name: "DHANANJAY MANGAL" },
+                        { SN: 35, ID: "2024KUCP1096", Name: "AYUSH" },
+                        { SN: 36, ID: "2024KUCP1097", Name: "ASTHA" },
+                        { SN: 37, ID: "2024KUCP1098", Name: "MITALI NAYAK" },
+                        { SN: 38, ID: "2024KUCP1099", Name: "SUMIT VERMA" },
+                        { SN: 39, ID: "2024KUCP1100", Name: "PRAMOD CHOUDHARY" },
+                        { SN: 40, ID: "2024KUCP1101", Name: "ANSHDEEP SINGH" },
+                        { SN: 41, ID: "2024KUCP1102", Name: "MAHAK GUPTA" },
+                        { SN: 42, ID: "2024KUCP1103", Name: "MS. HIMANI SABOO" },
+                        { SN: 43, ID: "2024KUCP1104", Name: "RAMANDEEP YADAV" },
+                        { SN: 44, ID: "2024KUCP1105", Name: "SIYA" },
+                        { SN: 45, ID: "2024KUCP1106", Name: "AVINASH SINGH" },
+                        { SN: 46, ID: "2024KUCP1107", Name: "MUKUL SHARMA" },
+                        { SN: 47, ID: "2024KUCP1108", Name: "PANKAJ KUMAR" },
+                        { SN: 48, ID: "2024KUCP1109", Name: "SHIVANSH YADAV" },
+                        { SN: 49, ID: "2024KUCP1110", Name: "MANISHA RATHORE" },
+                        { SN: 50, ID: "2024KUCP1111", Name: "PARVIKA SHEKHAWAT" },
+                        { SN: 51, ID: "2024KUCP1112", Name: "AMAN KRANTI" },
+                        { SN: 52, ID: "2024KUCP1113", Name: "SHUBHAM MISAL" },
+                        { SN: 53, ID: "2024KUCP1114", Name: "LALIT BAMANIYA" },
+                        { SN: 54, ID: "2024KUCP1115", Name: "ADVIK SAKSENA" },
+                        { SN: 55, ID: "2024KUCP1116", Name: "PEARL JAIN" },
+                        { SN: 56, ID: "2024KUCP1117", Name: "SHITANSHU PATEL" },
+                        { SN: 57, ID: "2024KUCP1118", Name: "YASH TOMER" },
+                        { SN: 58, ID: "2024KUCP1119", Name: "BHAVYA JOSHI" },
+                        { SN: 59, ID: "2024KUCP1120", Name: "YOGESH BANKAR" },
+                        { SN: 60, ID: "2024KUCP1121", Name: "JENILKUMAR" },
+                        { SN: 61, ID: "2024KUCP1122", Name: "SAGAR" },
+                        { SN: 62, ID: "2024KUAD3022", Name: "LOVEPREET SINGH" },
+                        { SN: 63, ID: "2024KUAD3023", Name: "SIDDHANT DIXIT" },
+                        { SN: 64, ID: "2024KUAD3024", Name: "SATYAM" },
+                        { SN: 65, ID: "2024KUAD3025", Name: "DARSHIL PAWAR" },
+                        { SN: 66, ID: "2024KUAD3026", Name: "DEVESH VERMA" },
+                        { SN: 67, ID: "2024KUAD3027", Name: "ROHIT KHADORIA" },
+                        { SN: 68, ID: "2024KUAD3028", Name: "BHAVYA DENWAL" },
+                        { SN: 69, ID: "2024KUAD3029", Name: "NIRMAL BAIRWA" },
+                        { SN: 70, ID: "2024KUAD3030", Name: "DIVYANSHU GIRI" },
+                        { SN: 71, ID: "2024KUAD3031", Name: "SOUMIL JOSHI" },
+                        { SN: 72, ID: "2024KUAD3032", Name: "RITESH KUMAR SINGH" },
+                        { SN: 73, ID: "2024KUAD3033", Name: "RALLAPALLI GUNADEEP" },
+                        { SN: 74, ID: "2024KUAD3034", Name: "SATYANSH MISHRA" },
+                        { SN: 75, ID: "2024KUAD3035", Name: "MALAVATHU BHANU PRASAD" },
+                        { SN: 76, ID: "2024KUAD3036", Name: "AMIT YADAV" },
+                        { SN: 77, ID: "2024KUAD3037", Name: "SAMRAT KUMAR SINGH" },
+                        { SN: 78, ID: "2024KUAD3038", Name: "RAMAVATH PAVAN" },
+                        { SN: 79, ID: "2024KUAD3039", Name: "ROKADE SAMARTH SANDEEP" },
+                        { SN: 80, ID: "2024KUAD3040", Name: "PRATYUSH SRIVASTAVA" },
+                        { SN: 81, ID: "2024KUAD3041", Name: "PATEL DHRUVKUMAR KAMLESHBHAI" },
+                        { SN: 82, ID: "2024KUAD3042", Name: "HARSH VARDHAN YADAV" },
+                        { SN: 83, ID: "2024KUEC2028", Name: "ARIN JHARBADE" },
+                        { SN: 84, ID: "2024KUEC2029", Name: "SHREYANSH SINGH" },
+                        { SN: 85, ID: "2024KUEC2030", Name: "KANCHAN KANWAR" },
+                        { SN: 86, ID: "2024KUEC2031", Name: "PRIYANSHU" },
+                        { SN: 87, ID: "2024KUEC2032", Name: "ANKIT KUMAR" },
+                        { SN: 88, ID: "2024KUEC2033", Name: "SHASHANK SINHA" },
+                        { SN: 89, ID: "2024KUEC2034", Name: "DRISHTI DHANDEL" },
+                        { SN: 90, ID: "2024KUEC2035", Name: "ANJU KUMARI" },
+                        { SN: 91, ID: "2024KUEC2036", Name: "KAKADIYA MEGH VIPULBHAI" },
+                        { SN: 92, ID: "2024KUEC2037", Name: "AMAN SINGH" },
+                        { SN: 93, ID: "2024KUEC2038", Name: "HARSH SHARMA" },
+                        { SN: 94, ID: "2024KUEC2039", Name: "NILESH KUMAR" },
+                        { SN: 95, ID: "2024KUEC2040", Name: "KARTIK ACHARYA" },
+                        { SN: 96, ID: "2024KUEC2041", Name: "AYUSH SINGH" },
+                        { SN: 97, ID: "2024KUEC2042", Name: "SANJAY DARSHAN M" },
+                        { SN: 98, ID: "2024KUEC2043", Name: "NEHA CHAUDHARY" },
+                        { SN: 99, ID: "2024KUEC2044", Name: "HALAVATH MAHESH" },
+                        { SN: 100, ID: "2024KUEC2045", Name: "HIMANSHI VERMA" },
+                        { SN: 101, ID: "2024KUEC2046", Name: "NAIN SINGH RATHORE" },
+                        { SN: 102, ID: "2024KUEC2047", Name: "GARVIT SUMAN" },
+                        { SN: 103, ID: "2024KUEC2048", Name: "NIKHIL KUMAR" },
+                        { SN: 104, ID: "2024KUEC2049", Name: "UTKARSH PANDEY" },
+                        { SN: 105, ID: "2024KUEC2050", Name: "BINAY JOSHI" },
+                        { SN: 106, ID: "2024KUEC2051", Name: "PRASHANT SINGH" },
+                        { SN: 107, ID: "2024KUEC2052", Name: "PAWAL SINGH THAKUR" },
+                        { SN: 108, ID: "2024KUEC2053", Name: "ASHISH SINGH" }
+
+                    ];
+
+                    const savedStates = JSON.parse(localStorage.getItem('studentChecklist')) || {};
+
+                    students.forEach(student => {
+                        const isChecked = savedStates[student.ID] || false;
+
+                        document.write(`
+                            <tr>
+                                <td>${student.SN}</td>
+                                <td>${student.ID}</td>
+                                <td>${student.Name}</td>
+                                <td><input type="checkbox" name="${student.ID}" ${isChecked ? 'checked' : ''} onchange="saveState('${student.ID}', this.checked)"></td>
+                            </tr>
+                        `);
+                    });
+
+                    function saveState(studentID, isChecked) {
+                        const states = JSON.parse(localStorage.getItem('studentChecklist')) || {};
+                        states[studentID] = isChecked;
+                        localStorage.setItem('studentChecklist', JSON.stringify(states));
+                    }
+                </script>
+            </tbody>
+        </table>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById('studentForm');
+            const formData = new FormData(form);
+
+            let submittedData = [];
+
+            formData.forEach((value, key) => {
+                submittedData.push(key);
+            });
+
+            alert('Submitted students: ' + submittedData.join(', '));
+        }
+    </script>
+</body>
+</html>
